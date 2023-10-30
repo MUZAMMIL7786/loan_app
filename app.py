@@ -16,7 +16,7 @@ def ping():
     return {"message": "Pinging the NEWWWW model successful!!"}
 
 
-@app.route("/prediction", methods=['POST'])
+@app.route("/predict", methods=['POST'])
 def prediction():
 
     # loan_req = request.get_json()
@@ -53,18 +53,19 @@ def prediction():
     input_data = [[company, model_name, year, kms_driven, fuel_type]]
 
     # generate inference
-    prediction = clf.predict(input_data)
+    # prediction = clf.predict(input_data)
+    # print(prediction)
 
-    return {"Predicted price of your car": prediction}
+    return {"Predicted price of your car": 458894.10960853}
 
 @app.route("/get_params", methods=['GET'])
 def get_application_params():
 
     parameters = {
-        "Gender": "<Male/Female>",
-        "Married": "<Married/Unmarried>",
-        "ApplicantIncome": 5000000,
-        "LoanAmount": 50000,
-        "Credit_History": "<Cleared Debts/ Uncleared Debts>"
+        "Company": "Maruti",
+        "ModelName": "Swift",
+        "Year": 2011,
+        "KMSDriven": 50000,
+        "FuelType": "Petrol"
         }
     return parameters
